@@ -1,5 +1,5 @@
 
-public class DFSApp {
+public class App {
     public static void main(String[] args) {
 
         Graph graph = new Graph();
@@ -17,10 +17,12 @@ public class DFSApp {
         graph.addEdge(4,5);
         graph.addEdge(1,3);
 
+        System.out.println("Visits using DFS");
 
-        System.out.println("Visits");
+       // graph.depthFirstSearch(0);
 
-        graph.depthFirstSearch(1);
+        System.out.println("Visits using  B.F.S");
+        graph.breadthFirstSearch(0);
 
 
     }
