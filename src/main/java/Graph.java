@@ -28,13 +28,16 @@ public class Graph {
         hasEdge[end][start] = true;
     }
 
-    public void depthFirstSearch(int start) {
+    public List<Integer> depthFirstSearch(int start) {
 
         // we need a starting point , assuming it is given
         this.vertexList[start].setVisited(true);
 
         displayVertex(start);
         vertexIdStack.push(start);
+
+        List<Integer> visitOrder = new LinkedList<Integer>();
+        visitOrder.add(start);
 
         while (!this.vertexIdStack.isEmpty()) {
 
@@ -46,10 +49,13 @@ public class Graph {
                 this.vertexList[vertexId].setVisited(true);
                 displayVertex(vertexId);
                 this.vertexIdStack.push(vertexId);
+                visitOrder.add(vertexId);
+
             }
 
         }
 
+        return visitOrder;
     }
 
     public List<Integer> breadthFirstSearch(int vertexId){
