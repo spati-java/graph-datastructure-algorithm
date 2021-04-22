@@ -1,1 +1,1 @@
-# graph-datastructure-algorithm
+# graphWithAdjacencyMatrix-datastructure-algorithm

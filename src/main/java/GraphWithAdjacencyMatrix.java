@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Graph {
+public class GraphWithAdjacencyMatrix {
 
     private final int MAX_VERTEX = 20;
     private Vertex[] vertexList;
@@ -11,7 +11,7 @@ public class Graph {
     private Stack<Integer> vertexIdStack;
     private Queue<Integer> vertexIdQueue;
 
-    public Graph() {
+    public GraphWithAdjacencyMatrix() {
         this.vertexList = new Vertex[MAX_VERTEX];
         this.hasEdge = new boolean[MAX_VERTEX][MAX_VERTEX];
         this.vertexId = 0;
