@@ -14,7 +14,7 @@ public class GraphWithAdjacencyListTest {
     private GraphWithAdjacencyList graph;
 
     @Before
-    public void init(){
+    public void init() {
 
         this.graph = new GraphWithAdjacencyList(20);
 
@@ -25,11 +25,10 @@ public class GraphWithAdjacencyListTest {
         this.graph.addNode('E');
 
 
-        this.graph.addNeighbours(0,4);
-        this.graph.addNeighbours(4,3);
-        this.graph.addNeighbours(3,1);
-        this.graph.addNeighbours(1,2);
-
+        this.graph.addNeighbours(0, 4);
+        this.graph.addNeighbours(4, 3);
+        this.graph.addNeighbours(3, 1);
+        this.graph.addNeighbours(1, 2);
 
     }
 
@@ -37,7 +36,7 @@ public class GraphWithAdjacencyListTest {
     @Test
     public void addNeighbours() throws Exception {
 
-        this.graph.addNeighbours(1,7);
+        this.graph.addNeighbours(1, 7);
         assertEquals(7, this.graph
                 .getNeighbours(1)
                 .get(2)
@@ -57,7 +56,7 @@ public class GraphWithAdjacencyListTest {
     }
 
     @Test
-    public void testGetNeighbours(){
+    public void testGetNeighbours() {
 
         List<Integer> neighbours = this.graph.getNeighbours(0);
 
@@ -70,20 +69,17 @@ public class GraphWithAdjacencyListTest {
     @Test
     public void depthFirstSearch() throws Exception {
 
-
-        char [] expectedArray = {'A' , 'E' , 'D' , 'B' , 'C'};
-
+        char[] expectedArray = {'A', 'E', 'D', 'B', 'C'};
         List<Character> actualVisitOrder = this.graph.depthFirstSearch(0);
 
         assertNotNull(actualVisitOrder);
 
-        char [] actualArray =  new char[actualVisitOrder.size()];
-        for(int i = 0; i <actualVisitOrder.size(); i++ )
+        char[] actualArray = new char[actualVisitOrder.size()];
+
+        for (int i = 0; i < actualVisitOrder.size(); i++)
             actualArray[i] = actualVisitOrder.get(i);
 
         assertArrayEquals(expectedArray, actualArray);
-
-
 
     }
 
