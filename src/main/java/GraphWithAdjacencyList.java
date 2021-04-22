@@ -60,24 +60,17 @@ public class GraphWithAdjacencyList {
         while (!this.stack.isEmpty()) {
 
             int tempNodeId = this.stack.pop();
-
             resultList.add(this.vertexList.get(tempNodeId).getLabel());
-
             List<Integer> neighbours = this.getNeighbours(tempNodeId);
 
             for (Integer neighbourId : neighbours) {
-
                 Vertex vertex = this.vertexList.get(neighbourId);
-
                 if (!vertex.isVisited()) {
                     this.stack.push(neighbourId);
                     vertex.setVisited(true);
                 }
-
             }
-
         }
-
 
         return resultList;
     }
