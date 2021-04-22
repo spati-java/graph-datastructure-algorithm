@@ -2,27 +2,27 @@
 public class App {
     public static void main(String[] args) {
 
-        Graph graph = new Graph();
-        graph.addVertex('A');
-        graph.addVertex('B');
-        graph.addVertex('C');
-        graph.addVertex('D');
-        graph.addVertex('E');
-        graph.addVertex('F');
+        GraphWithAdjacencyMatrix graphWithAdjacencyMatrix = new GraphWithAdjacencyMatrix();
+        graphWithAdjacencyMatrix.addVertex('A');
+        graphWithAdjacencyMatrix.addVertex('B');
+        graphWithAdjacencyMatrix.addVertex('C');
+        graphWithAdjacencyMatrix.addVertex('D');
+        graphWithAdjacencyMatrix.addVertex('E');
+        graphWithAdjacencyMatrix.addVertex('F');
 
-        graph.addEdge(0,1);
-        graph.addEdge(1,2);
-        graph.addEdge(0,3);
-        graph.addEdge(3,4);
-        graph.addEdge(4,5);
-        graph.addEdge(1,3);
+        graphWithAdjacencyMatrix.addEdge(0,1);
+        graphWithAdjacencyMatrix.addEdge(1,2);
+        graphWithAdjacencyMatrix.addEdge(0,3);
+        graphWithAdjacencyMatrix.addEdge(3,4);
+        graphWithAdjacencyMatrix.addEdge(4,5);
+        graphWithAdjacencyMatrix.addEdge(1,3);
 
         System.out.println("Visits using DFS");
 
-       // graph.depthFirstSearch(0);
+       // graphWithAdjacencyMatrix.depthFirstSearch(0);
 
         System.out.println("Visits using  B.F.S");
-        graph.breadthFirstSearch(0);
+        graphWithAdjacencyMatrix.breadthFirstSearch(0);
 
 
     }
