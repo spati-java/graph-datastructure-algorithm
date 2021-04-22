@@ -5,14 +5,14 @@ public class GraphWithAdjacencyList {
     private List<List<Integer>> neighbours;
 
     private List<Vertex> vertexList;
-    // depth first search
+
+    // for depth first search
     private Stack<Integer> stack;
 
     // for breadth first search
     private Queue<Integer> queue;
 
     public GraphWithAdjacencyList(int numberOfNodes) {
-
 
         this.vertexList = new ArrayList<Vertex>();
         this.neighbours = new ArrayList<List<Integer>>();
@@ -22,6 +22,7 @@ public class GraphWithAdjacencyList {
         for (int i = 0; i < numberOfNodes; i++) {
             neighbours.add(i, new ArrayList<Integer>());
         }
+
     }
 
     public void addNeighbours(int startNodeId, int endNodeId) {
@@ -73,5 +74,34 @@ public class GraphWithAdjacencyList {
         }
 
         return resultList;
+    }
+
+
+    public List<Character> breadthFirstSearch(int startNodeId) {
+
+        List<Character> result = new ArrayList<Character>();
+
+        this.vertexList.get(startNodeId).setVisited(true);
+        this.queue.offer(startNodeId);
+        this.displayNodeData(startNodeId);
+        while(!this.queue.isEmpty()) {
+
+            Integer tempNodeId = this.queue.poll();
+
+            result.add(this.vertexList.get(tempNodeId).getLabel());
+
+            for(Integer neighbourId: this.neighbours.get(tempNodeId)){
+
+                Vertex vertex = this.vertexList.get(neighbourId);
+
+                if(!vertex.isVisited()) {
+                    vertex.setVisited(true);
+                    displayNodeData(neighbourId);
+                    this.queue.offer(neighbourId);
+                }
+            }
+        }
+
+        return result;
     }
 }
