@@ -28,32 +28,34 @@ public class GraphWithAdjacencyListTest {
     @Test
     public void addNeighbours() throws Exception {
 
-        this.graph.addNeighbours(1, 7);
-        assertEquals(7, this.graph
+        this.graph.addNeighbours(1, 3);
+        assertEquals(3, this.graph
                 .getNeighbours(1)
-                .get(2)
+                .get(0)
                 .intValue());
-
-    }
-
-    @Test
-    public void addNode() throws Exception {
-        assertNotNull(this.graph);
-        assertEquals(8, this.graph.getVertexList().size());
-    }
-
-    @Test
-    public void displayNodeData() throws Exception {
 
     }
 
     @Test
     public void testGetNeighbours() {
 
+        this.graph.addNeighbours(0, 4);
+
         List<Integer> neighbours = this.graph.getNeighbours(0);
 
-        assertEquals(3, neighbours.size());
-        assertEquals(5, neighbours.get(0).intValue());
+        assertEquals(1, neighbours.size());
+        assertEquals(4, neighbours.get(0).intValue());
+
+    }
+
+    @Test
+    public void addNode() throws Exception {
+        assertNotNull(this.graph);
+        assertEquals(5, this.graph.getVertexList().size());
+    }
+
+    @Test
+    public void displayNodeData() throws Exception {
 
     }
 
