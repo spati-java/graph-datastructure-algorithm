@@ -62,9 +62,8 @@ public class GraphWithAdjacencyList {
 
             int tempNodeId = this.stack.pop();
             resultList.add(this.vertexList.get(tempNodeId).getLabel());
-            List<Integer> neighbours = this.getNeighbours(tempNodeId);
 
-            for (Integer neighbourId : neighbours) {
+            for (Integer neighbourId : getNeighbours(tempNodeId)) {
                 Vertex vertex = this.vertexList.get(neighbourId);
                 if (!vertex.isVisited()) {
                     this.stack.push(neighbourId);
@@ -84,17 +83,15 @@ public class GraphWithAdjacencyList {
         this.vertexList.get(startNodeId).setVisited(true);
         this.queue.offer(startNodeId);
         this.displayNodeData(startNodeId);
-        while(!this.queue.isEmpty()) {
+
+        while (!this.queue.isEmpty()) {
 
             Integer tempNodeId = this.queue.poll();
-
             result.add(this.vertexList.get(tempNodeId).getLabel());
 
-            for(Integer neighbourId: this.neighbours.get(tempNodeId)){
-
+            for (Integer neighbourId : getNeighbours(tempNodeId)) {
                 Vertex vertex = this.vertexList.get(neighbourId);
-
-                if(!vertex.isVisited()) {
+                if (!vertex.isVisited()) {
                     vertex.setVisited(true);
                     displayNodeData(neighbourId);
                     this.queue.offer(neighbourId);
