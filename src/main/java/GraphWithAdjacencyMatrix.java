@@ -80,7 +80,8 @@ public class GraphWithAdjacencyMatrix {
     }
 
     public char displayVertex(int vertexId) {
-        System.out.println("Visiting vertexId " + vertexId + " " + this.vertexList[vertexId].getLabel());
+        //System.out.println("Visiting vertexId " + vertexId + " " + this.vertexList[vertexId].getLabel());
+        System.out.print(this.vertexList[vertexId].getLabel());
         return this.vertexList[vertexId].getLabel();
 
     }
@@ -88,10 +89,40 @@ public class GraphWithAdjacencyMatrix {
     public int getUnvisitedAdjacentVertexId(int vertexId) {
 
         for (int j = 0; j < this.vertexId; j++) {
+
             if (this.hasEdge[vertexId][j] && !this.vertexList[j].isVisited()) {
                 return j;
             }
         }
         return -1;
+    }
+
+    public void minimumSpanningTree(int startVertexId) {
+
+        this.vertexList[startVertexId].setVisited(true);
+        this.vertexIdStack.push(startVertexId);
+
+        while(!this.vertexIdStack.isEmpty()){
+
+            int currentVertexId = this.vertexIdStack.peek();
+            int neighbourId = getUnvisitedAdjacentVertexId(currentVertexId);
+
+            if(neighbourId  == -1) {
+                this.vertexIdStack.pop();
+            }
+            else{
+
+                this.vertexList[neighbourId].setVisited(true);
+                this.vertexIdStack.push(neighbourId);
+                displayVertex(currentVertexId);
+                displayVertex(neighbourId);
+                System.out.print(" ");
+
+
+            }
+        }
+
+
+
     }
 }
