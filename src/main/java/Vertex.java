@@ -1,6 +1,7 @@
 
 public class Vertex {
 
+
     private char label;
     private boolean isVisited;
 
@@ -24,4 +25,5 @@ public class Vertex {
     public void setVisited(boolean visited) {
         isVisited = visited;
     }
+
 }

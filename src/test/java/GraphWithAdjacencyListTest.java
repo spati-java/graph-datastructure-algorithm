@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 public class GraphWithAdjacencyListTest {
 
 
+
     private GraphWithAdjacencyList graph;
 
     @Before
@@ -101,6 +102,32 @@ public class GraphWithAdjacencyListTest {
             actualVisitOrder[i] = charList.get(i);
 
         assertArrayEquals(expectedVisitOrder, actualVisitOrder);
+
+    }
+
+    @Test
+    public void minimumSpanningTree() throws Exception {
+
+
+        this.graph.addNode('A');
+        this.graph.addNode('B');
+        this.graph.addNode('C');
+        this.graph.addNode('D');
+        this.graph.addNode('E');
+
+        this.graph.addNeighbours(0,1);
+        this.graph.addNeighbours(0,2);
+        this.graph.addNeighbours(0,3);
+        this.graph.addNeighbours(0,4);
+        this.graph.addNeighbours(1,2);
+        this.graph.addNeighbours(1,3);
+        this.graph.addNeighbours(1,4);
+        this.graph.addNeighbours(2,3);
+        this.graph.addNeighbours(2,4);
+        this.graph.addNeighbours(3,4);
+
+        this.graph.minimumSpanningTree(0);
+
 
     }
 

@@ -3,17 +3,13 @@ import java.util.*;
 public class GraphWithAdjacencyList {
 
     private List<List<Integer>> neighbours;
-
     private List<Vertex> vertexList;
-
     // for depth first search
     private Stack<Integer> stack;
-
     // for breadth first search
     private Queue<Integer> queue;
 
     public GraphWithAdjacencyList(int numberOfNodes) {
-
         this.vertexList = new ArrayList<Vertex>();
         this.neighbours = new ArrayList<List<Integer>>();
         this.stack = new Stack<Integer>();
@@ -22,11 +18,9 @@ public class GraphWithAdjacencyList {
         for (int i = 0; i < numberOfNodes; i++) {
             neighbours.add(i, new ArrayList<Integer>());
         }
-
     }
 
     public void addNeighbours(int startNodeId, int endNodeId) {
-
         if (this.vertexList.isEmpty())
             throw new RuntimeException("Please create node first");
 
@@ -39,30 +33,25 @@ public class GraphWithAdjacencyList {
 
     public void displayNodeData(int nodeId) {
         Vertex vertex = vertexList.get(nodeId);
-        System.out.println(vertex.getLabel());
+        System.out.print(vertex.getLabel() + " ");
     }
 
     public List<Vertex> getVertexList() {
         return vertexList;
     }
-
     public List<Integer> getNeighbours(int nodeId) {
         return neighbours.get(nodeId);
     }
 
 
     public List<Character> depthFirstSearch(int startNodeId) {
-
         List<Character> resultList = new ArrayList<Character>();
-
         this.vertexList.get(startNodeId).setVisited(true);
         this.stack.push(startNodeId);
 
         while (!this.stack.isEmpty()) {
-
             int tempNodeId = this.stack.pop();
             resultList.add(this.vertexList.get(tempNodeId).getLabel());
-
             for (Integer neighbourId : getNeighbours(tempNodeId)) {
                 Vertex vertex = this.vertexList.get(neighbourId);
                 if (!vertex.isVisited()) {
@@ -71,7 +60,6 @@ public class GraphWithAdjacencyList {
                 }
             }
         }
-
         return resultList;
     }
 
@@ -100,5 +88,28 @@ public class GraphWithAdjacencyList {
         }
 
         return result;
+    }
+
+    public void minimumSpanningTree(int startNodeId) {
+
+        this.vertexList.get(startNodeId).setVisited(true);
+        this.stack.push(startNodeId);
+
+        while(!this.stack.isEmpty()) {
+
+            int currentNodeId = this.stack.pop();
+
+            for(Integer neighbourId: getNeighbours(currentNodeId)){
+                Vertex vertex = this.vertexList.get(neighbourId);
+                if (!vertex.isVisited()) {
+                    this.stack.push(neighbourId);
+                    vertex.setVisited(true);
+                    displayNodeData(currentNodeId);
+                    displayNodeData(neighbourId);
+                    System.out.print(" ");
+                }
+            }
+
+        }
     }
 }
